@@ -299,7 +299,13 @@
       
         
           
-          之前一直困扰的问题，今下午终于研究解决了
+          之前一直困扰的问题，今下午终于研究解决了。
+问题描述：从vulnhub下载靶机，导入虚拟机后，dhcp不启动，无法对ip进行探测。
+解决办法：
+0x01 在进入系统界面的时候，按e，找到有 ro XXXXXX quiet的一行，把原本的内容删除，并且改写成rw single init=/bin/bash，然后按ctrl+x，进入单用户模式。
+
+0x02使用命令ip a查看当前使用了哪些端口
+在对d
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -426,8 +432,9 @@
         
           
           主机探测方法总结
-arpscan mas
-          ...
+arpscan masscan nmap netdiscover
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/23/20200423DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/#more" rel="contents">
@@ -552,7 +559,8 @@ arpscan mas
       
         
           
-          Welcome to Hexo! Thi
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
           ...
           <!--noindex-->
           <div class="post-button text-center">
