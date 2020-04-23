@@ -299,29 +299,18 @@
       
         
           
-            <p>之前一直困扰的问题，今下午终于研究解决了。</p>
-<p>问题描述：从vulnhub下载靶机，导入虚拟机后，dhcp不启动，无法对ip进行探测。</p>
-<p>解决办法：</p>
-<h5 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a><strong>0x01</strong></h5><p> 在进入系统界面的时候，按e，找到有 ro XXXXXX quiet的一行，把原本的内容删除，并且改写成rw single init=/bin/bash，然后按ctrl+x，进入单用户模式。</p>
-<p><img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/202004231.png" alt=""></p>
-<h5 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h5><p>使用命令ip a查看当前使用了哪些端口</p>
-<p>在对dc-1～dc-9系列靶机进行导入测试时，遇到两种情况，一种是eth0，一种是ens33，</p>
-<p>不管哪一种，只需要在下一步键入对应的端口即可。</p>
-<p><img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/202004232.png" alt=""></p>
-<h5 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a><strong>0x03</strong></h5><p>vi /etc/network/interfaces</p>
-<p>打开后根据刚才ip a查找到的端口，输入，要保证有两条命令</p>
-<p>auto eth0</p>
-<p>iface eth0 inet dhcp</p>
-<p>如果是ens33就如图</p>
-<p><img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/202004233.png" alt=""></p>
-<p>注意vi在输入时，o是在当前光标位置的下一个位置输入。退出时记得保存。</p>
-<h5 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a><strong>0x04</strong></h5><p>/etc/init.d/networking start</p>
-<p>会自动执行dhcp并分配ip</p>
-<p>使用ifconfig即可查看到ip</p>
-<p>(其实这一步不执行也ok，这一步是为了验证刚才执行结果有效，因为当前还是在单用户模式下)</p>
-<p>记得重启正常进入linux</p>
-
-          
+          之前一直困扰的问题，今下午终于研究解决了。
+问题描述：从vulnhub下载靶机，导入虚拟机后，dhcp不启动，无法对ip进行探测。
+解决办法：
+0x01 在进入系统界面的时候，按e，找到有 ro XXXXXX quiet的一行，把原本的内容删除，并且改写成rw single init=/bin/ba
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/23/20200423%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -439,10 +428,17 @@
       
         
           
-            <p>主机探测方法总结</p>
-<p>arpscan masscan nmap netdiscover</p>
+          主机探测方法总结
+arpscan masscan nmap netdiscover
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/23/20200423DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -560,21 +556,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/22/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
