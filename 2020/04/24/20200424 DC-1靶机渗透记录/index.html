@@ -79,15 +79,16 @@
 
 
 
-<meta name="description" content="0x00靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    0x01 Metaspolit获取shell访问地址，发现是 drupal。   先记录个浏览器插件 Wappalyzer可以查看当前网站的指纹信息。">
+<meta name="description" content="0x00靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    洲哥的blog  中学到了一种方法  nmap -A -p 1-65535 172.20.10.3   0x01 Metaspolit获取shell访问地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20200424DC-1靶机渗透记录">
 <meta property="og:url" content="https://marslx.github.io/2020/04/24/20200424%20DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="MarsLX BLOG">
-<meta property="og:description" content="0x00靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    0x01 Metaspolit获取shell访问地址，发现是 drupal。   先记录个浏览器插件 Wappalyzer可以查看当前网站的指纹信息。">
+<meta property="og:description" content="0x00靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    洲哥的blog  中学到了一种方法  nmap -A -p 1-65535 172.20.10.3   0x01 Metaspolit获取shell访问地址">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC-1-001.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-002.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-003.png">
+<meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC-1-021.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-004.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-006.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-005.png">
@@ -105,7 +106,7 @@
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-020.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-021.png">
 <meta property="article:published_time" content="2020-04-24T06:40:51.000Z">
-<meta property="article:modified_time" content="2020-04-24T17:19:48.489Z">
+<meta property="article:modified_time" content="2020-04-25T01:50:32.561Z">
 <meta property="article:author" content="Mars LX">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC-1-001.png">
@@ -337,6 +338,11 @@
 </blockquote>
 <img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-003.png" style="zoom:33%;" />
 
+<p><a href="https://t0ng2333.github.io/2019/11/20/DC-1/#more" target="_blank" rel="noopener">洲哥的blog</a>  中学到了一种方法</p>
+<blockquote>
+<p>nmap -A -p 1-65535 172.20.10.3</p>
+</blockquote>
+<p><img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC-1-021.png" alt=""></p>
 <h3 id="0x01-Metaspolit获取shell"><a href="#0x01-Metaspolit获取shell" class="headerlink" title="0x01 Metaspolit获取shell"></a>0x01 Metaspolit获取shell</h3><p>访问地址，发现是 drupal。</p>
 <img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-004.png" style="zoom:33%;" />
 
