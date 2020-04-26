@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="0x00靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    洲哥的blog  中学到了一种方法  nmap -A -p 1-65535 172.20.10.3   0x01 Metaspolit获取shell访问地址">
+<meta name="description" content="0x00 信息收集靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    洲哥的blog  中学到了一种方法  nmap -A -p 1-65535 172.20.10.3   0x01 Metaspolit获取shel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20200424DC-1靶机渗透记录">
 <meta property="og:url" content="https://marslx.github.io/2020/04/24/20200424%20DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="MarsLX BLOG">
-<meta property="og:description" content="0x00靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    洲哥的blog  中学到了一种方法  nmap -A -p 1-65535 172.20.10.3   0x01 Metaspolit获取shell访问地址">
+<meta property="og:description" content="0x00 信息收集靶机常规三件套 主机发现 (如果探测不到，请看 另一篇博文 )  netdiscover    端口扫描  nmap -p 1-65535 172.20.10.3    目录扫描  dirb http:&#x2F;&#x2F;172.20.10.3    洲哥的blog  中学到了一种方法  nmap -A -p 1-65535 172.20.10.3   0x01 Metaspolit获取shel">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC-1-001.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-002.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-003.png">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-020.png">
 <meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-021.png">
 <meta property="article:published_time" content="2020-04-24T06:40:51.000Z">
-<meta property="article:modified_time" content="2020-04-25T01:50:32.561Z">
+<meta property="article:modified_time" content="2020-04-25T02:14:17.405Z">
 <meta property="article:author" content="Mars LX">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC-1-001.png">
@@ -319,7 +319,7 @@
       
 
       
-        <h3 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h3><p>靶机常规三件套</p>
+        <h3 id="0x00-信息收集"><a href="#0x00-信息收集" class="headerlink" title="0x00 信息收集"></a>0x00 信息收集</h3><p>靶机常规三件套</p>
 <p><strong>主机发现</strong> (如果探测不到，请看 <a href="https://marslx.github.io/2020/04/23/20200423靶机搜索不到ip的问题研究/">另一篇博文</a> )</p>
 <blockquote>
 <p>netdiscover</p>
@@ -368,12 +368,12 @@
 <img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-010.png" style="zoom:40%;" />
 
 <p>根据提示，下一步需要查看config文件。</p>
-<h3 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h3><p>经过翻找，发现可疑配置文件/var/www/stes/default/settings.php</p>
+<h3 id="0x02-配置文件"><a href="#0x02-配置文件" class="headerlink" title="0x02 配置文件"></a>0x02 配置文件</h3><p>经过翻找，发现可疑配置文件/var/www/stes/default/settings.php</p>
 <p>查看该文件可以得到第二个flag与下一步的提示。</p>
 <img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-011.png" style="zoom: 33%;" />
 
 <p>得到数据库连接密码。</p>
-<h3 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h3><p>直接执行mysql命令，发现无法执行，才发现一直在meterpreter下……</p>
+<h3 id="0x03-MySQL泄密"><a href="#0x03-MySQL泄密" class="headerlink" title="0x03 MySQL泄密"></a>0x03 MySQL泄密</h3><p>直接执行mysql命令，发现无法执行，才发现一直在meterpreter下……</p>
 <p>执行shell命令。</p>
 <p>得到无交互的shell。</p>
 <p>执行</p>
@@ -408,7 +408,7 @@
 <p>点击添加文章按钮，添加一篇文章后，发现地址是从3开始计数的，尝试修改为2。得到flag</p>
 <p><img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-017.png" alt=""></p>
 <p>提示中提到了password…..shadow关键词。</p>
-<h3 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h3><p>查看etc下面的两个文件。</p>
+<h3 id="0x04-密码"><a href="#0x04-密码" class="headerlink" title="0x04 密码"></a>0x04 密码</h3><p>查看etc下面的两个文件。</p>
 <p>一个是/etc/shadow。无权限</p>
 <p>一个是/etc/passwd。访问结果如下</p>
 <p><img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/DC1-018.png" alt=""></p>
@@ -433,7 +433,26 @@
 
 
 <p>这里对suid提权还是存疑，需要进一步学习探究。</p>
-<h3 id="0x06-番外1-ssh密码爆破"><a href="#0x06-番外1-ssh密码爆破" class="headerlink" title="0x06 番外1-ssh密码爆破"></a>0x06 番外1-ssh密码爆破</h3><p>待补充</p>
+<h3 id="0x06-番外1-ssh密码爆破"><a href="#0x06-番外1-ssh密码爆破" class="headerlink" title="0x06 番外1-ssh密码爆破"></a>0x06 番外1-ssh密码爆破</h3><p>crunch</p>
+<p>john</p>
+<p>medusa</p>
+<p>hydra</p>
+<h5 id="crunch"><a href="#crunch" class="headerlink" title="crunch"></a>crunch</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">crunch 8 8 -t k1ll0r@% -o pass.txt</span><br><span class="line">其中 8 8 表示密码整体长度 最小为8位 最大为8位</span><br><span class="line">-t是指定模式  @ 插入小写字母</span><br><span class="line">						, 插入大写字母</span><br><span class="line">						^ 插入特殊符号</span><br><span class="line">						% 插入数字</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="medusa"><a href="#medusa" class="headerlink" title="medusa"></a>medusa</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">medusa -h 192.168.31.108 -u guest -P matrix_pass.txt -M ssh</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hydra -l root -P top3000.txt -s 6789 -vV 39.97.111.215 ssh</span><br><span class="line">hydra -l guest -P pass.txt -s 22 -vV 192.168.31.108 ssh</span><br><span class="line">参数-vV会显示当前执行的进度。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 <h3 id="0x07-番外2-Kali下的searchspolit如何使用"><a href="#0x07-番外2-Kali下的searchspolit如何使用" class="headerlink" title="0x07 番外2-Kali下的searchspolit如何使用"></a>0x07 番外2-Kali下的searchspolit如何使用</h3><p>kali下的Searchspolit 工具提权方法研究：</p>
 <p>uname -a 得到系统版本</p>
 <p>cat /etc/issue </p>
@@ -473,6 +492,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/26/20200426%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="prev" title="20200426反编译微信小程序">
+                20200426反编译微信小程序 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -549,7 +572,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -586,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00"><span class="nav-number">1.</span> <span class="nav-text">0x00</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Metaspolit获取shell"><span class="nav-number">2.</span> <span class="nav-text">0x01 Metaspolit获取shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02"><span class="nav-number">3.</span> <span class="nav-text">0x02</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03"><span class="nav-number">4.</span> <span class="nav-text">0x03</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04"><span class="nav-number">5.</span> <span class="nav-text">0x04</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-suid提权"><span class="nav-number">6.</span> <span class="nav-text">0x05 suid提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x06-番外1-ssh密码爆破"><span class="nav-number">7.</span> <span class="nav-text">0x06 番外1-ssh密码爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x07-番外2-Kali下的searchspolit如何使用"><span class="nav-number">8.</span> <span class="nav-text">0x07 番外2-Kali下的searchspolit如何使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-信息收集"><span class="nav-number">1.</span> <span class="nav-text">0x00 信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Metaspolit获取shell"><span class="nav-number">2.</span> <span class="nav-text">0x01 Metaspolit获取shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-配置文件"><span class="nav-number">3.</span> <span class="nav-text">0x02 配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-MySQL泄密"><span class="nav-number">4.</span> <span class="nav-text">0x03 MySQL泄密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-密码"><span class="nav-number">5.</span> <span class="nav-text">0x04 密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-suid提权"><span class="nav-number">6.</span> <span class="nav-text">0x05 suid提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x06-番外1-ssh密码爆破"><span class="nav-number">7.</span> <span class="nav-text">0x06 番外1-ssh密码爆破</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#crunch"><span class="nav-number">7.0.1.</span> <span class="nav-text">crunch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#medusa"><span class="nav-number">7.0.2.</span> <span class="nav-text">medusa</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hydra"><span class="nav-number">7.0.3.</span> <span class="nav-text">hydra</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x07-番外2-Kali下的searchspolit如何使用"><span class="nav-number">8.</span> <span class="nav-text">0x07 番外2-Kali下的searchspolit如何使用</span></a></li></ol></div>
             
 
           </div>
