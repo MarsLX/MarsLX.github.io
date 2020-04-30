@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/28/20200428suid%E6%8F%90%E6%9D%83/">
+    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/30/20200430%20DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mars LX">
@@ -247,7 +247,153 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/28/20200428suid%E6%8F%90%E6%9D%83/" itemprop="url">20200428suid提权</a></h1>
+                <a class="post-title-link" href="/2020/04/30/20200430%20DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" itemprop="url">20200430DC-2靶机渗透记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T09:39:16+08:00">
+                2020-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          涉及到的知识点：
+1 hosts文件
+2 cewl生成密码字典
+3 wpscan
+4 nikto
+5 git提权
+6 su 切换用户
+7 sudo -l 查看当前用户的权限
+0x00 信息收集主机发现、端口探测、目录扫描三连
+
+
+得到ip 172.20.10.9
+使用命令扫描全端口
+
+nmap -p- 172.20.10.9
+
+发现开放了80 与7744端口。
+
+
+尝试访问80端口。
+此处的774
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/30/20200430%20DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/28/20200428%20suid%E6%8F%90%E6%9D%83%5B%E5%BE%85%E8%A1%A5%E5%85%85%5D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mars LX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MarsLX BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/28/20200428%20suid%E6%8F%90%E6%9D%83%5B%E5%BE%85%E8%A1%A5%E5%85%85%5D/" itemprop="url">20200428suid提权</a></h1>
         
 
         <div class="post-meta">
@@ -304,154 +450,7 @@
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/28/20200428suid%E6%8F%90%E6%9D%83/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/28/20200428DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mars LX">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MarsLX BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/28/20200428DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" itemprop="url">20200428DC-2靶机渗透记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T09:39:16+08:00">
-                2020-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          涉及到的知识点：
-1 hosts文件
-2 cewl生成密码字典
-3 wpscan
-4 nikto
-5 git提权
-6 su
-7 sudo -l
-8 
-0x00 信息收集主机发现、端口探测、目录扫描三连
-
-
-得到ip 172.20.10.9
-使用命令扫描全端口
-
-nmap -p- 172.20.10.9
-
-发现开放了80 与7744端口。
-
-
-尝试访问80端口。
-此处的7744端口无法判断开启了什么
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/28/20200428DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/#more" rel="contents">
+            <a class="btn" href="/2020/04/28/20200428%20suid%E6%8F%90%E6%9D%83%5B%E5%BE%85%E8%A1%A5%E5%85%85%5D/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -635,7 +634,7 @@ net start mysql
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/26/20200426%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/26/20200426%20%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mars LX">
@@ -654,7 +653,7 @@ net start mysql
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/26/20200426%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url">20200426反编译微信小程序</a></h1>
+                <a class="post-title-link" href="/2020/04/26/20200426%20%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url">20200426反编译微信小程序</a></h1>
         
 
         <div class="post-meta">
@@ -717,7 +716,7 @@ net start mysql
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/26/20200426%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/#more" rel="contents">
+            <a class="btn" href="/2020/04/26/20200426%20%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -918,7 +917,7 @@ nmap -A -p 1-65535 172.20.10.3
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/23/20200423%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/">
+    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/23/20200423%20%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mars LX">
@@ -937,7 +936,7 @@ nmap -A -p 1-65535 172.20.10.3
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/23/20200423%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/" itemprop="url">20200423靶机搜索不到ip的问题研究</a></h1>
+                <a class="post-title-link" href="/2020/04/23/20200423%20%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/" itemprop="url">20200423靶机搜索不到ip的问题研究</a></h1>
         
 
         <div class="post-meta">
@@ -999,7 +998,7 @@ nmap -A -p 1-65535 172.20.10.3
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/23/20200423%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/#more" rel="contents">
+            <a class="btn" href="/2020/04/23/20200423%20%E9%9D%B6%E6%9C%BA%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%88%B0ip%E7%9A%84%E9%97%AE%E9%A2%98%E7%A0%94%E7%A9%B6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

